@@ -22,7 +22,7 @@ import java.util.concurrent.ExecutionException;
 public class EmailController {
 
 
-    @PostMapping("/test")
+    @PostMapping("/email")
     public String postTest(@RequestBody JSONObject json){
         Email from = new Email("mezmerizingcoder444@gmail.com");
         Email to = new Email("faustinopauljustine@gmail.com");
