@@ -38,6 +38,7 @@ public class EmailController {
 
         //Total Sales
 //        personalization.addDynamicTemplateData("totalSales", 20500);
+        personalization.addDynamicTemplateData("reportDate", json.get("reportDate"));
         personalization.addDynamicTemplateData("totalSales", json.get("totalSales"));
 //        personalization.addDynamicTemplateData("totalOrders", 25);
         personalization.addDynamicTemplateData("totalService", json.get("totalService"));
