@@ -79,7 +79,7 @@ public class EmailController {
         mail.setReplyTo(from);
         mail.setTemplateId("d-5f68fda2f89244bb82b224515c8b1262");
 
-        SendGrid sg = new SendGrid("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");
+        SendGrid sg = new SendGrid(System.getenv("SENDGRID_API_KEY"));
         Request request = new Request();
 
         try{
@@ -147,7 +147,7 @@ public class EmailController {
         mail.setReplyTo(from);
         mail.setTemplateId("d-5f68fda2f89244bb82b224515c8b1262");
 
-        SendGrid sg = new SendGrid("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");
+        SendGrid sg = new SendGrid(System.getenv("SENDGRID_API_KEY"));
         Request request = new Request();
 
         try{
