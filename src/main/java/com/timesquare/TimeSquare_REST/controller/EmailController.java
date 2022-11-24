@@ -25,7 +25,7 @@ public class EmailController {
     @PostMapping("/email")
     public String postTest(@RequestBody JSONObject json){
         Email from = new Email("mezmerizingcoder444@gmail.com");
-        Email to = new Email("faustinopauljustine@gmail.com");
+        Email to = new Email("timesquare.bulsu.dev@gmail.com");
         String subject = "Ayee";
         Content content = new Content("text/plain", "I'm replacing the <strong>body tag</strong>");
 
