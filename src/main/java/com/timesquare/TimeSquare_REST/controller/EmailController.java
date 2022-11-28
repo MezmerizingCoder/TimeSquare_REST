@@ -43,6 +43,8 @@ public class EmailController {
 //        personalization.addDynamicTemplateData("totalOrders", 25);
         personalization.addDynamicTemplateData("totalService", json.get("totalService"));
         personalization.addDynamicTemplateData("totalRefund", json.get("totalRefund"));
+        personalization.addDynamicTemplateData("storeBranch", json.get("storeBranch"));
+        personalization.addDynamicTemplateData("storeAddress", json.get("storeAddress"));
 
         //Ring Chart
 //        personalization.addDynamicTemplateData("chartURL", "{type:'doughnut',data:{labels:['January','February','March','April','May'],datasets:[{data:[50,60,70,180,190]}]},options:{plugins:{doughnutlabel:{labels:[{text:'550',font:{size:20}},{text:'total'}]}}}}");
