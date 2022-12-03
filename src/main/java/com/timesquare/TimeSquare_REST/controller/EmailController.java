@@ -9,9 +9,13 @@ import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
 import com.sendgrid.helpers.mail.objects.Personalization;
+import com.timesquare.TimeSquare_REST.services.MyUserDetailsService;
+import com.timesquare.TimeSquare_REST.util.JwtUtil;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JsonArray;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -24,8 +28,10 @@ public class EmailController {
 
     @PostMapping("/email")
     public String postTest(@RequestBody JSONObject json){
-        Email from = new Email("mezmerizingcoder444@gmail.com");
-        Email to = new Email("timesquare.bulsu.dev@gmail.com");
+        Email from = new Email("timesquare.bulsu.dev@gmail.com");
+//        Email to = new Email("timesquare.bulsu.dev@gmail.com");
+        Email to = new Email((String) json.get("sendTo"));
+
         String subject = "Ayee";
         Content content = new Content("text/plain", "I'm replacing the <strong>body tag</strong>");
 
@@ -172,16 +178,16 @@ public class EmailController {
         return "email sent";
     }
 
-    class Test {
-
-        String name;
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-    }
+//    class Test {
+//
+//        String name;
+//
+//        public String getName() {
+//            return name;
+//        }
+//
+//        public void setName(String name) {
+//            this.name = name;
+//        }
+//    }
 }
