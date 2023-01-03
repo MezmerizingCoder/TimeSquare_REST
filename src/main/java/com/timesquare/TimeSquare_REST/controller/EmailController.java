@@ -109,6 +109,54 @@ public class EmailController {
         return "email sent ";
     }
 
+    @PostMapping("/service_email")
+    public String postService(@RequestBody JSONObject json){
+        Email from = new Email("timesquare.bulsu.dev@gmail.com");
+        Email to = new Email((String) json.get("sendTo"));
+
+        Mail mail = new Mail();
+        mail.setFrom(from);
+        Personalization personalization = new Personalization();
+        personalization.addTo(to);
+
+
+//        personalization.addDynamicTemplateData("reportDate", json.get("reportDate"));
+//        personalization.addDynamicTemplateData("storeBranch", json.get("storeBranch"));
+        personalization.addDynamicTemplateData("storeAddress", json.get("storeAddress"));
+        personalization.addDynamicTemplateData("dateClaim", json.get("dateClaim"));
+        personalization.addDynamicTemplateData("customer", json.get("customer"));
+
+
+
+        mail.addPersonalization(personalization);
+
+
+        mail.setReplyTo(from);
+        mail.setTemplateId("d-e5f1e2cf350f49f98ca92643127d9077");
+
+
+        SendGrid sg = new SendGrid((String) json.get("apiKey"));
+        Request request = new Request();
+
+        try{
+            request.setMethod(Method.POST);
+            request.setEndpoint("mail/send");
+            request.setBody(mail.build());
+            Response response = sg.api(request);
+            System.out.println(response.getStatusCode());
+            System.out.println(response.getBody());
+            System.out.println(response.getHeaders());
+
+        }catch(Exception e){
+
+        }
+
+
+        return "email sent ";
+    }
+
+
+
     @GetMapping("/email")
     public String sendEmail() throws ExecutionException, InterruptedException {
         Email from = new Email("mezmerizingcoder444@gmail.com");
